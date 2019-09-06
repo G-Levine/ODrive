@@ -1,5 +1,8 @@
 #include <MagAlpha.h>
 
+// Uses this library: https://github.com/monolithicpower/MagAlpha-Arduino-Library
+
+
 //Check https://www.arduino.cc/en/reference/SPI for SPI signals connections
 
 #define UART_BAUDRATE       115200        //UART data rate in bits per second (baud)
@@ -20,7 +23,7 @@ void setup() {
 void loop() {
     double angle;
     //Read the angle
-    angle = magAlpha.readAngleRaw16();
+    angle = magAlpha.readAngleRaw16() / 4; // Convert to 14-bit
     Serial.println(angle, 3);
     //Wait before the next angle measurement (not needed by the sensor, only targeted to make the output easier to read)
     delay(0.125);
